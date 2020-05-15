@@ -66,8 +66,17 @@ int main()
 	
 
 	//Á·Ï°¶þ
-	
-	IplImage *img_in = cvLoadImage("etest.jpg");
+	Mat img = imread("etest.jpg");
+	Mat Channels[3];//0=B,1=G,2=R;
+	Mat img_B, img_R, img_G,img_out;
+	split(img, Channels);
+	equalizeHist(Channels[0], Channels[0]);
+	equalizeHist(Channels[1], Channels[1]);
+	equalizeHist(Channels[2], Channels[2]);
+	merge(Channels, 3,img_out);
+	imshow("img_out", img_out);
+
+	/*IplImage *img_in = cvLoadImage("etest.jpg");
 	IplImage *img_red = cvCreateImage(cvGetSize(img_in), IPL_DEPTH_8U, 1);	
 	IplImage *img_blue = cvCreateImage(cvGetSize(img_in), IPL_DEPTH_8U, 1);	
 	IplImage *img_green = cvCreateImage(cvGetSize(img_in), IPL_DEPTH_8U, 1);	
@@ -80,7 +89,7 @@ int main()
 	cvEqualizeHist(img_red, img_red); 	
 	cvMerge(img_blue, img_green, img_red, 0, img_out);	
 	cvNamedWindow("img_out", CV_WINDOW_AUTOSIZE);	
-	cvShowImage("img_out", img_out);
+	cvShowImage("img_out", img_out);*/
 
 	
 	
