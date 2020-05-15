@@ -46,7 +46,7 @@ int main()
 
 	
 	//练习一伽马矫正
-	Mat src = imread("face.jpg");
+	Mat src = imread("face.jpg",0);
 
 	//取两种不同的gamma值
 
